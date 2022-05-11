@@ -1,7 +1,15 @@
 class Post
   def initialize
     @created_at = Time.now
-    @text       = nil
+    @text       = []
+  end
+
+  def self.post_types
+    [Memo, Task, Link]
+  end
+
+  def self.create(type_index)
+    return post_types[type_index].new
   end
 
   def read_from_console
